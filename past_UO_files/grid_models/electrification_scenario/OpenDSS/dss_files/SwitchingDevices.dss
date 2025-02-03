@@ -1,0 +1,207 @@
+New Line.PadSwitch(R:DT18-DT42)_342 bus1=DT18-DT42X.2 bus2=DT18-DT42XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT18-DT42)_343 bus1=DT18-DT42XXX.2 bus2=DT42.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT27-DT45)_346 bus1=DT27-DT45XXX.3 bus2=DT27-DT45XX.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT27-DT45)_347 bus1=DT27-DT45X.3 bus2=DT27.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT45-DT64)_348 bus1=DT45-DT64X.2 bus2=DT45-DT64XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT45-DT64)_349 bus1=DT45-DT64XXX.2 bus2=DT64.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT10-DT22)_356 bus1=DT10-DT22X.2 bus2=DT10-DT22XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT10-DT22)_357 bus1=DT10-DT22XXX.2 bus2=DT22.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT24-DT25)_368 bus1=DT24-DT25XXX.3 bus2=DT24-DT25XX.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT24-DT25)_369 bus1=DT24-DT25X.3 bus2=DT24.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT26-DT30)_372 bus1=DT26-DT30X.3 bus2=DT26-DT30XX.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT26-DT30)_373 bus1=DT26-DT30XXX.3 bus2=DT30.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT50-DT51)_396 bus1=DT50-DT51X.2 bus2=DT50-DT51XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT50-DT51)_397 bus1=DT50-DT51XXX.2 bus2=DT51.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT5-DT52)_398 bus1=DT5-DT52X.1 bus2=DT5-DT52XX.1 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT5-DT52)_399 bus1=DT5-DT52XXX.1 bus2=DT52.1 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT54-DT59)_416 bus1=DT54-DT59X.3 bus2=DT54-DT59XX.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT54-DT59)_417 bus1=DT54-DT59XXX.3 bus2=DT59.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT53-DT73)_424 bus1=DT53-DT73X.1 bus2=DT53-DT73XX.1 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT53-DT73)_425 bus1=DT53-DT73XXX.1 bus2=DT73.1 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT67-DT80)_438 bus1=DT67-DT80X.2 bus2=DT67-DT80XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT67-DT80)_439 bus1=DT67-DT80XXX.2 bus2=DT80.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT12-DT81)_444 bus1=DT12-DT81X.2 bus2=DT12-DT81XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT12-DT81)_445 bus1=DT12-DT81XXX.2 bus2=DT81.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT44-DT72)_448 bus1=DT44-DT72X.1 bus2=DT44-DT72XX.1 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT44-DT72)_449 bus1=DT44-DT72XXX.1 bus2=DT72.1 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT40-DT7)_480 bus1=DT40-DT7XXX.3 bus2=DT40-DT7XX.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT40-DT7)_481 bus1=DT40-DT7X.3 bus2=DT40.3 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT34-DT35)_482 bus1=DT34.2 bus2=DT34-DT35X.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT34-DT35)_483 bus1=DT34-DT35XX.2 bus2=DT35.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT33-DT34)_484 bus1=DT33.2 bus2=DT33-DT34X.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT33-DT34)_485 bus1=DT33-DT34XX.2 bus2=DT34.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT33-DT41)_486 bus1=DT41.2 bus2=DT33-DT41XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT33-DT41)_487 bus1=DT33-DT41X.2 bus2=DT33.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT41-DT7)_488 bus1=DT41-DT7XXX.2 bus2=DT41-DT7XX.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT41-DT7)_489 bus1=DT41-DT7X.2 bus2=DT41.2 Length=0.001 Phases=1 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT10-DT23)_358 bus1=DT23 bus2=DT10-DT23XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT10-DT23)_359 bus1=DT10-DT23X bus2=DT10 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT23-DT6)_360 bus1=DT6 bus2=DT23-DT6XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT23-DT6)_361 bus1=DT23-DT6X bus2=DT23 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT29-DT6)_362 bus1=DT29 bus2=DT29-DT6X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT29-DT6)_363 bus1=DT29-DT6XX bus2=DT6 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT29-DT3)_364 bus1=DT3 bus2=DT29-DT3XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT29-DT3)_365 bus1=DT29-DT3X bus2=DT29 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT21-DT3)_366 bus1=DT21 bus2=DT21-DT3X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT21-DT3)_367 bus1=DT21-DT3XX bus2=DT3 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT21-DT4)_388 bus1=DT21 bus2=DT21-DT4X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT21-DT4)_389 bus1=DT21-DT4XX bus2=DT4 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT11-DT21)_390 bus1=DT11 bus2=DT11-DT21X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT11-DT21)_391 bus1=DT11-DT21XX bus2=DT21 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT11-DT43)_392 bus1=DT43 bus2=DT11-DT43XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT11-DT43)_393 bus1=DT11-DT43X bus2=DT11 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT43-DT71)_394 bus1=DT71 bus2=DT43-DT71XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT43-DT71)_395 bus1=DT43-DT71X bus2=DT43 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT69-DT71)_434 bus1=DT69 bus2=DT69-DT71X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT69-DT71)_435 bus1=DT69-DT71XX bus2=DT71 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT67-DT69)_436 bus1=DT67 bus2=DT67-DT69X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT67-DT69)_437 bus1=DT67-DT69XX bus2=DT69 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT67-DT68)_440 bus1=DT68 bus2=DT67-DT68XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT67-DT68)_441 bus1=DT67-DT68X bus2=DT67 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT12-DT68)_442 bus1=DT12 bus2=DT12-DT68X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT12-DT68)_443 bus1=DT12-DT68XX bus2=DT68 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT12-DT44)_446 bus1=DT44 bus2=DT12-DT44XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT12-DT44)_447 bus1=DT12-DT44X bus2=DT12 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT44-DT46)_450 bus1=DT46 bus2=DT44-DT46XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT44-DT46)_451 bus1=DT44-DT46X bus2=DT44 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT1-DT46)_452 bus1=DT1 bus2=DT1-DT46X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT1-DT46)_453 bus1=DT1-DT46XX bus2=DT46 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT13-DT16)_456 bus1=DT16 bus2=DT13-DT16XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT13-DT16)_457 bus1=DT13-DT16X bus2=DT13 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT15-DT16)_458 bus1=DT15 bus2=DT15-DT16X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT15-DT16)_459 bus1=DT15-DT16XX bus2=DT16 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT14-DT15)_464 bus1=DT14 bus2=DT14-DT15X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT14-DT15)_465 bus1=DT14-DT15XX bus2=DT15 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT14-DT47)_466 bus1=DT47 bus2=DT14-DT47XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT14-DT47)_467 bus1=DT14-DT47X bus2=DT14 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT1-DT47)_468 bus1=DT1 bus2=DT1-DT47X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT1-DT47)_469 bus1=DT1-DT47XX bus2=DT47 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT0-DT1)_470 bus1=DT0 bus2=DT0-DT1X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT0-DT1)_471 bus1=DT0-DT1XX bus2=DT1 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT28-DT65)_508 bus1=DT65 bus2=DT28-DT65XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT28-DT65)_509 bus1=DT28-DT65X bus2=DT28 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT0-DT65)_510 bus1=DT0 bus2=DT0-DT65X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT0-DT65)_511 bus1=DT0-DT65XX bus2=DT65 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.Breaker(R:DT0-sub_6271173a-9d78-4b65-96e8-a680e4caea0e_12.47)_512 bus1=sub_6271173a-9d78-4b65-96e8-a680e4caea0e_1247 bus2=DT0-sub_6271173a-9d78-4b65-96e8-a680e4caea0e_1247X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT45-DT8)_344 bus1=DT45 bus2=DT45-DT8X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT45-DT8)_345 bus1=DT45-DT8XX bus2=DT8 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT18-DT45)_350 bus1=DT18 bus2=DT18-DT45X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT18-DT45)_351 bus1=DT18-DT45XX bus2=DT45 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT18-DT9)_352 bus1=DT9 bus2=DT18-DT9XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT18-DT9)_353 bus1=DT18-DT9X bus2=DT18 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT10-DT9)_354 bus1=DT10 bus2=DT10-DT9X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT10-DT9)_355 bus1=DT10-DT9XX bus2=DT9 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT25-DT61)_370 bus1=DT61 bus2=DT25-DT61XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT25-DT61)_371 bus1=DT25-DT61X bus2=DT25 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT17-DT26)_374 bus1=DT17 bus2=DT17-DT26X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT17-DT26)_375 bus1=DT17-DT26XX bus2=DT26 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT17-DT63)_376 bus1=DT63 bus2=DT17-DT63XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT17-DT63)_377 bus1=DT17-DT63X bus2=DT17 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT20-DT63)_378 bus1=DT63 bus2=DT20-DT63XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT20-DT63)_379 bus1=DT20-DT63X bus2=DT20 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT62-DT63)_380 bus1=DT62 bus2=DT62-DT63X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT62-DT63)_381 bus1=DT62-DT63XX bus2=DT63 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT61-DT62)_382 bus1=DT61 bus2=DT61-DT62X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT61-DT62)_383 bus1=DT61-DT62XX bus2=DT62 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT32-DT61)_384 bus1=DT32 bus2=DT32-DT61X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT32-DT61)_385 bus1=DT32-DT61XX bus2=DT61 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT32-DT4)_386 bus1=DT4 bus2=DT32-DT4XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT32-DT4)_387 bus1=DT32-DT4X bus2=DT32 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:548398899_2U-DT55)_400 bus1=DT55 bus2=548398899_2U-DT55XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:548398899_2U-DT55)_401 bus1=548398899_2U-DT55X bus2=548398899_2U Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:17_0U-DT36)_402 bus1=DT36 bus2=17_0U-DT36XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:17_0U-DT36)_403 bus1=17_0U-DT36X bus2=17_0U Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:31_2U-DT57)_404 bus1=DT57 bus2=31_2U-DT57XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:31_2U-DT57)_405 bus1=31_2U-DT57X bus2=31_2U Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT57-DT79)_406 bus1=DT79 bus2=DT57-DT79XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT57-DT79)_407 bus1=DT57-DT79X bus2=DT57 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT60-DT79)_408 bus1=DT60 bus2=DT60-DT79X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT60-DT79)_409 bus1=DT60-DT79XX bus2=DT79 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT36-DT60)_410 bus1=DT36 bus2=DT36-DT60X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT36-DT60)_411 bus1=DT36-DT60XX bus2=DT60 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT36-DT58)_412 bus1=DT58 bus2=DT36-DT58XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT36-DT58)_413 bus1=DT36-DT58X bus2=DT36 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT54-DT58)_414 bus1=DT54 bus2=DT54-DT58X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT54-DT58)_415 bus1=DT54-DT58XX bus2=DT58 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT54-DT55)_418 bus1=DT55 bus2=DT54-DT55XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT54-DT55)_419 bus1=DT54-DT55X bus2=DT54 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT55-DT56)_420 bus1=DT56 bus2=DT55-DT56XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT55-DT56)_421 bus1=DT55-DT56X bus2=DT55 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT53-DT56)_422 bus1=DT53 bus2=DT53-DT56X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT53-DT56)_423 bus1=DT53-DT56XX bus2=DT56 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT5-DT53)_426 bus1=DT5 bus2=DT5-DT53X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT5-DT53)_427 bus1=DT5-DT53XX bus2=DT53 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT5-DT78)_428 bus1=DT78 bus2=DT5-DT78XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT5-DT78)_429 bus1=DT5-DT78X bus2=DT5 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT50-DT78)_430 bus1=DT50 bus2=DT50-DT78X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT50-DT78)_431 bus1=DT50-DT78XX bus2=DT78 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT50-DT71)_432 bus1=DT71 bus2=DT50-DT71XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT50-DT71)_433 bus1=DT50-DT71X bus2=DT50 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT13-DT2)_454 bus1=DT13 bus2=DT13-DT2X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT13-DT2)_455 bus1=DT13-DT2XX bus2=DT2 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT19-DT31)_460 bus1=DT19 bus2=DT19-DT31X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT19-DT31)_461 bus1=DT19-DT31XX bus2=DT31 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT15-DT19)_462 bus1=DT15 bus2=DT15-DT19X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT15-DT19)_463 bus1=DT15-DT19XX bus2=DT19 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:96_0U-DT70)_472 bus1=DT70 bus2=96_0U-DT70XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:96_0U-DT70)_473 bus1=96_0U-DT70X bus2=96_0U Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT48-DT70)_474 bus1=DT48 bus2=DT48-DT70X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT48-DT70)_475 bus1=DT48-DT70XX bus2=DT70 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT48-DT49)_476 bus1=DT49 bus2=DT48-DT49XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT48-DT49)_477 bus1=DT48-DT49X bus2=DT48 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT49-DT75)_478 bus1=DT75 bus2=DT49-DT75XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT49-DT75)_479 bus1=DT49-DT75X bus2=DT49 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT39-DT7)_490 bus1=DT39 bus2=DT39-DT7X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT39-DT7)_491 bus1=DT39-DT7XX bus2=DT7 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT38-DT39)_492 bus1=DT38 bus2=DT38-DT39X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT38-DT39)_493 bus1=DT38-DT39XX bus2=DT39 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT37-DT38)_494 bus1=DT37 bus2=DT37-DT38X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT37-DT38)_495 bus1=DT37-DT38XX bus2=DT38 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT37-DT76)_496 bus1=DT76 bus2=DT37-DT76XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT37-DT76)_497 bus1=DT37-DT76X bus2=DT37 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT75-DT76)_498 bus1=DT75 bus2=DT75-DT76X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT75-DT76)_499 bus1=DT75-DT76XX bus2=DT76 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT74-DT75)_500 bus1=DT74 bus2=DT74-DT75X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT74-DT75)_501 bus1=DT74-DT75XX bus2=DT75 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT74-DT77)_502 bus1=DT77 bus2=DT74-DT77XX Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT74-DT77)_503 bus1=DT74-DT77X bus2=DT74 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT66-DT77)_504 bus1=DT66 bus2=DT66-DT77X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT66-DT77)_505 bus1=DT66-DT77XX bus2=DT77 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT28-DT66)_506 bus1=DT28 bus2=DT28-DT66X Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT28-DT66)_507 bus1=DT28-DT66XX bus2=DT66 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT70-DT71)_513 bus1=DT71 bus2=DT70-DT71XX Length=0.001 Phases=3 enabled=n Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT70-DT71)_514 bus1=DT70-DT71X bus2=DT70 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:31_2U-DT18)_515 bus1=DT18 bus2=31_2U-DT18XX Length=0.001 Phases=3 enabled=n Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:31_2U-DT18)_516 bus1=31_2U-DT18X bus2=31_2U Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT2-DT4)_517 bus1=DT2 bus2=DT2-DT4X Length=0.001 Phases=3 enabled=n Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.PadSwitch(R:DT2-DT4)_518 bus1=DT2-DT4XX bus2=DT4 Length=0.001 Phases=3 Switch=y Units=km Normamps=3000 Emergamps=3000
+New Line.Fuse(R:DT5-DT52)_519 bus1=DT5.1 bus2=DT5-DT52X.1 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT5-DT52)_519 monitoredobj=Line.Fuse(R:DT5-DT52)_519 enabled=no
+New Line.Fuse(R:DT40-DT7)_520 bus1=DT7.3 bus2=DT40-DT7XXX.3 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT40-DT7)_520 monitoredobj=Line.Fuse(R:DT40-DT7)_520 enabled=no
+New Line.Fuse(R:DT41-DT7)_521 bus1=DT7.2 bus2=DT41-DT7XXX.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT41-DT7)_521 monitoredobj=Line.Fuse(R:DT41-DT7)_521 enabled=no
+New Line.Fuse(R:DT10-DT22)_522 bus1=DT10.2 bus2=DT10-DT22X.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT10-DT22)_522 monitoredobj=Line.Fuse(R:DT10-DT22)_522 enabled=no
+New Line.Fuse(R:DT12-DT81)_523 bus1=DT12.2 bus2=DT12-DT81X.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT12-DT81)_523 monitoredobj=Line.Fuse(R:DT12-DT81)_523 enabled=no
+New Line.Fuse(R:DT18-DT42)_524 bus1=DT18.2 bus2=DT18-DT42X.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT18-DT42)_524 monitoredobj=Line.Fuse(R:DT18-DT42)_524 enabled=no
+New Line.Fuse(R:DT24-DT25)_525 bus1=DT25.3 bus2=DT24-DT25XXX.3 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT24-DT25)_525 monitoredobj=Line.Fuse(R:DT24-DT25)_525 enabled=no
+New Line.Fuse(R:DT26-DT30)_526 bus1=DT26.3 bus2=DT26-DT30X.3 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT26-DT30)_526 monitoredobj=Line.Fuse(R:DT26-DT30)_526 enabled=no
+New Line.Fuse(R:DT44-DT72)_527 bus1=DT44.1 bus2=DT44-DT72X.1 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT44-DT72)_527 monitoredobj=Line.Fuse(R:DT44-DT72)_527 enabled=no
+New Line.Fuse(R:DT27-DT45)_528 bus1=DT45.3 bus2=DT27-DT45XXX.3 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT27-DT45)_528 monitoredobj=Line.Fuse(R:DT27-DT45)_528 enabled=no
+New Line.Fuse(R:DT45-DT64)_529 bus1=DT45.2 bus2=DT45-DT64X.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT45-DT64)_529 monitoredobj=Line.Fuse(R:DT45-DT64)_529 enabled=no
+New Line.Fuse(R:DT50-DT51)_530 bus1=DT50.2 bus2=DT50-DT51X.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT50-DT51)_530 monitoredobj=Line.Fuse(R:DT50-DT51)_530 enabled=no
+New Line.Fuse(R:DT53-DT73)_531 bus1=DT53.1 bus2=DT53-DT73X.1 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT53-DT73)_531 monitoredobj=Line.Fuse(R:DT53-DT73)_531 enabled=no
+New Line.Fuse(R:DT54-DT59)_532 bus1=DT54.3 bus2=DT54-DT59X.3 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT54-DT59)_532 monitoredobj=Line.Fuse(R:DT54-DT59)_532 enabled=no
+New Line.Fuse(R:DT67-DT80)_533 bus1=DT67.2 bus2=DT67-DT80X.2 Length=0.001 Phases=1 Units=km Normamps=3000 Emergamps=3000
+New Fuse.Fuse(R:DT67-DT80)_533 monitoredobj=Line.Fuse(R:DT67-DT80)_533 enabled=no
