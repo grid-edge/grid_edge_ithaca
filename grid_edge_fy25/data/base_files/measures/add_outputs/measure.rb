@@ -3,54 +3,101 @@
 # see the URL below for information on how to write OpenStudio measures
 # http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
 
-# start the measure
 class AddOutputs < OpenStudio::Measure::ModelMeasure
-  # human readable name
   def name
-    # Measure name should be the title case of the class name.
     return 'add_outputs'
   end
 
-  # human readable description
   def description
     return 'This measure adds output variables and creates required output reports'
   end
 
-  # human readable description of modeling approach
   def modeler_description
     return 'This measure adds output variables and creates required output reports'
   end
 
-  # define the arguments that the user will input
   def arguments(model)
     args = OpenStudio::Measure::OSArgumentVector.new
-
-    # # the name of the space to add to the model
-    # space_name = OpenStudio::Measure::OSArgument.makeStringArgument('space_name', true)
-    # space_name.setDisplayName('New space name')
-    # space_name.setDescription('This name will be used as the name of the new space.')
-    # args << space_name
-
     return args
   end
 
-  # define what happens when the measure is run
   def run(model, runner, user_arguments)
-    super(model, runner, user_arguments)  # Do **NOT** remove this line
+    super(model, runner, user_arguments)
 
-    # use the built-in error checking
     if !runner.validateUserArguments(arguments(model), user_arguments)
       return false
     end
 
-  
+    # -------------------------------------------------------------------------
+    # Sanitize a string for use as an EMS identifier.
+    # EMS names: alphanumeric + underscore only, max 100 chars.
+    # Keep limit at 60 to leave room for suffixes (_Sensor, _kWh).
+    # -------------------------------------------------------------------------
     def sanitize_ems_name(name)
-      name.gsub(/[^A-Za-z0-9_]/, '')[0..59] # Remove special chars, limit to 60 chars
+      name.gsub(/[^A-Za-z0-9_]/, '')[0..59]
     end
 
-    # Add output variables for Facility Total Purchased Electricity Energy, Facility Total Surplus Electricity Energy,
-    # Facility Net Purchased Electricity Energy, Facility Total Produced Electricity Energy in Wh and J.
-    # These are added regardless of whether a battery is present or not.
+    # -------------------------------------------------------------------------
+    # Register one Output:Meter + EMS chain (sensor -> global var -> program ->
+    # PCM -> EMS output var -> Alfalfa OutputVariable) for the given
+    # EnergyPlus meter name. All user-facing output is in kWh.
+    #
+    # The Output:Meter itself is kept (EnergyPlus meters are internally in J)
+    # so the EMS sensor has a meter to bind to. Only the kWh-converted
+    # custom variable is exported to Alfalfa / the .eso.
+    #
+    # CRITICAL: out_meter.setName() sets the EnergyPlus meter name, which is
+    # the exact string EP uses to look up its internal meter registry.
+    # It must be the real meter name (e.g. "Electricity:Facility"), NOT the
+    # sanitized identifier. The sanitized name is only used for EMS objects.
+    # -------------------------------------------------------------------------
+    def add_meter(model, meter_name)
+      san = sanitize_ems_name(meter_name)
+
+      # Output:Meter
+      out_meter = OpenStudio::Model::OutputMeter.new(model)
+      out_meter.setName(meter_name)           # exact EP meter name
+      out_meter.setReportingFrequency('Timestep')
+      out_meter.setMeterFileOnly(false)       # write to .eso so EMS sensor can read it
+
+      # EMS Sensor (meter-based sensors have no key name)
+      sensor_name = san + '_Sensor'
+      sensor = OpenStudio::Model::EnergyManagementSystemSensor.new(model, meter_name)
+      sensor.setName(sensor_name)
+
+      # EMS Global Variable (kWh)
+      glob_kWh_name = san + '_kWh'
+      glob_kWh = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, glob_kWh_name)
+
+      # EMS Program: convert J -> kWh
+      prog = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
+      prog.setName('Convert_' + san)
+      prog.addLine("SET #{glob_kWh_name} = #{sensor_name} / 3600000.0")
+
+      # Program Calling Manager
+      pcm = OpenStudio::Model::EnergyManagementSystemProgramCallingManager.new(model)
+      pcm.setName('Run_' + san)
+      pcm.setCallingPoint('EndOfSystemTimestepBeforeHVACReporting')
+      pcm.addProgram(prog)
+
+      # EMS Output Variable
+      ems_out_kWh = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, glob_kWh)
+      ems_out_kWh.setName("EMS_#{glob_kWh_name}")
+      ems_out_kWh.setUpdateFrequency('Timestep')
+
+      # Alfalfa-readable OutputVariable (kWh)
+      ov_kWh = OpenStudio::Model::OutputVariable.new("EMS_#{glob_kWh_name}", model)
+      ov_kWh.setName(glob_kWh_name)
+      ov_kWh.setReportingFrequency('Timestep')
+      ov_kWh.setKeyValue('EMS')
+      ov_kWh.setExportToBCVTB(true)
+    end
+
+    # =========================================================================
+    # OUTPUT VARIABLES — facility-level purchased/surplus/net/produced electricity
+    # These are OutputVariables (not meters), key = "Whole Building".
+    # Reported in kWh via EMS conversion.
+    # =========================================================================
     variables = [
       'Facility Total Purchased Electricity Energy',
       'Facility Total Surplus Electricity Energy',
@@ -59,142 +106,234 @@ class AddOutputs < OpenStudio::Measure::ModelMeasure
     ]
 
     variables.each do |var_name|
+      san = sanitize_ems_name(var_name)
 
-      glob_name = sanitize_ems_name(var_name)
-
-      #  Output variable
       out_var = OpenStudio::Model::OutputVariable.new(var_name, model)
-      out_var.setName(glob_name)
+      out_var.setName(san)
       out_var.setReportingFrequency('Timestep')
 
-      #  EMS Sensor
-      sensor_name = glob_name + "_Sensor"
+      sensor_name   = san + '_Sensor'
+      glob_kWh_name = san + '_kWh'
+
       sensor = OpenStudio::Model::EnergyManagementSystemSensor.new(model, var_name)
       sensor.setName(sensor_name)
-      sensor.setKeyName("Whole Building")
+      sensor.setKeyName('Whole Building')
 
-      #  EMS Global Variable (in Wh)
-      glob_name_kwh = glob_name + "_kWh"
-      glob = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, glob_name_kwh)
+      glob_kWh = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, glob_kWh_name)
 
-      #  EMS Global Variable (in J)
-      glob_name_j = glob_name + "_J"
-      glob_j = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, glob_name_j)
+      prog = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
+      prog.setName('Convert_' + san)
+      prog.addLine("SET #{glob_kWh_name} = #{sensor_name} / 3600000.0")
 
-      #  EMS Program (J to Wh conversion)
-      prog_name = "Convert_" + glob_name
-      ems_program = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
-      ems_program.setName(prog_name)
-      ems_program.addLine("SET #{glob_name_j} = #{sensor_name}")
-      ems_program.addLine("SET #{glob_name_kwh} = #{sensor_name} / 3600 / 1000") # convert to kWh
-
-      #  Program Calling Manager
-      pcm_name = "Run_" + glob_name
       pcm = OpenStudio::Model::EnergyManagementSystemProgramCallingManager.new(model)
-      pcm.setName(pcm_name)
-      pcm.setCallingPoint("EndOfSystemTimestepBeforeHVACReporting")
-      pcm.addProgram(ems_program)
+      pcm.setName('Run_' + san)
+      pcm.setCallingPoint('EndOfSystemTimestepBeforeHVACReporting')
+      pcm.addProgram(prog)
 
-      #  EMS OutputVariable for Wh value
-      ems_output = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, glob)
-      ems_output.setName("EMS_#{glob_name}_kWh")
-      ems_output.setUpdateFrequency("Timestep")
+      ems_out_kWh = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, glob_kWh)
+      ems_out_kWh.setName("EMS_#{glob_kWh_name}")
+      ems_out_kWh.setUpdateFrequency('Timestep')
 
-      #  OutputVariable Wh(Alfalfa-readable)
-      out_var_kwh = OpenStudio::Model::OutputVariable.new("EMS_#{glob_name}_kWh", model)
-      out_var_kwh.setName("#{glob_name}_kWh")
-      out_var_kwh.setReportingFrequency("Timestep")
-      out_var_kwh.setKeyValue("EMS")
-      out_var_kwh.setExportToBCVTB(true)
-
-      #  EMS OutputVariable for J value
-      ems_output = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, glob_j)
-      ems_output.setName("EMS_#{glob_name}_J")
-      ems_output.setUpdateFrequency("Timestep")
-
-      #  OutputVariable J(Alfalfa-readable)
-      out_var_j = OpenStudio::Model::OutputVariable.new("EMS_#{glob_name}_J", model)
-      out_var_j.setName("#{glob_name}_J")
-      out_var_j.setReportingFrequency("Timestep")
-      out_var_j.setKeyValue("EMS")
-      out_var_j.setExportToBCVTB(true)
+      ov_kWh = OpenStudio::Model::OutputVariable.new("EMS_#{glob_kWh_name}", model)
+      ov_kWh.setName("#{san}_kWh")
+      ov_kWh.setReportingFrequency('Timestep')
+      ov_kWh.setKeyValue('EMS')
+      ov_kWh.setExportToBCVTB(true)
     end
 
+    # =========================================================================
+    # OUTPUT METERS
+    #
+    # The meter list below is derived from the actual .mdd output of ResStock
+    # EP 24.2 models. Only meters confirmed present in real model runs are
+    # included unconditionally. Fuel-specific meters (gas, oil, propane) and
+    # ResStock end-use sub-meters are guarded by model object checks.
+    #
+    # DO NOT add meters speculatively. An EMS sensor referencing a meter that
+    # EnergyPlus never instantiated is a Fatal Severe error.
+    # =========================================================================
 
-    # Add output meters for building, facility in Wh and J, since these parameters do not have output variables.
-    # These are added regardless of whether a battery is present or not.
-    meters = [
-      'Electricity:Building',
+    # ── Electricity — unconditional (confirmed present in all ResStock models) ─
+    # Source: .mdd validated against EP 24.2 ResStock runs
+    [
       'Electricity:Facility',
-    ]
+      'Electricity:Building',
+      'Electricity:HVAC',
+      'Fans:Electricity',
+      'Pumps:Electricity',
+      'InteriorLights:Electricity',
+      'ExteriorLights:Electricity',
+      'InteriorEquipment:Electricity',
+      'Cooling:Electricity',
+      'Heating:Electricity',
+      'WaterSystems:Electricity',
+    ].each { |m| add_meter(model, m) }
 
-    meters.each do |meter_name|
-
-      meter_name_santized = sanitize_ems_name(meter_name)
-
-      #  Output:Meter
-      out_meter = OpenStudio::Model::OutputMeter.new(model)
-      out_meter.setName(meter_name_santized)
-      out_meter.setReportingFrequency('Timestep')
-
-      #  EMS Sensor
-      sensor_name = meter_name_santized + "_Sensor"
-      sensor = OpenStudio::Model::EnergyManagementSystemSensor.new(model, meter_name)
-      sensor.setName(sensor_name)
-
-      #  EMS Global Variable (in J)
-      glob_name_J = meter_name_santized + "_J"
-      glob_J = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, glob_name_J)
-
-      #  EMS Global Variable (in Wh)
-      glob_name_kWh = meter_name_santized + "_kWh"
-      glob_kWh = OpenStudio::Model::EnergyManagementSystemGlobalVariable.new(model, glob_name_kWh)
-
-      #  EMS Program (J to Wh conversion)
-      prog_name = "Convert_" + meter_name_santized
-      ems_program = OpenStudio::Model::EnergyManagementSystemProgram.new(model)
-      ems_program.setName(prog_name)
-      ems_program.addLine("SET #{glob_name_J} = #{sensor_name}") # add sensor value as well
-      ems_program.addLine("SET #{glob_name_kWh} = #{sensor_name} / 3600 / 1000") # convert to kWh
-
-      #  Program Calling Manager
-      pcm_name = "Run_" + meter_name_santized
-      pcm = OpenStudio::Model::EnergyManagementSystemProgramCallingManager.new(model)
-      pcm.setName(pcm_name)
-      pcm.setCallingPoint("EndOfSystemTimestepBeforeHVACReporting")
-      pcm.addProgram(ems_program)
-
-      #  EMS OutputVariable J
-      ems_output = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, glob_J)
-      ems_output.setName("EMS_#{glob_name_J}")
-      ems_output.setUpdateFrequency("Timestep")
-
-      #  EMS OutputVariable kWh
-      ems_output_sensor = OpenStudio::Model::EnergyManagementSystemOutputVariable.new(model, glob_kWh)
-      ems_output_sensor.setName("EMS_#{glob_name_kWh}")
-      ems_output_sensor.setUpdateFrequency("Timestep")
-
-      #  OutputVariable J (Alfalfa-readable)
-      out_var_J = OpenStudio::Model::OutputVariable.new("EMS_#{glob_name_J}", model)
-      out_var_J.setName("#{glob_name_J}")
-      out_var_J.setReportingFrequency("Timestep")
-      out_var_J.setKeyValue("EMS")
-      out_var_J.setExportToBCVTB(true)
-
-      #  OutputVariable kWh (Alfalfa-readable)
-      out_var_kWh = OpenStudio::Model::OutputVariable.new("EMS_#{glob_name_kWh}", model)
-      out_var_kWh.setName("#{glob_name_kWh}")
-      out_var_kWh.setReportingFrequency("Timestep")
-      out_var_kWh.setKeyValue("EMS")
-      out_var_kWh.setExportToBCVTB(true)
+    # ── Electricity — PV/battery systems ──────────────────────────────────────
+    # Present when an ElectricLoadCenterDistribution exists (battery, PV, or both).
+    # The .mdd confirms: ElectricityProduced:Facility, Cogeneration:Electricity,
+    # ElectricityPurchased:Facility, ElectricitySurplusSold:Facility,
+    # ElectricityNet:Facility are all instantiated together when ELCD exists.
+    if model.getElectricLoadCenterDistributions.any?
+      runner.registerInfo('PV/battery system detected -- adding electricity production/net meters.')
+      [
+        'ElectricityProduced:Facility',
+        'Cogeneration:Electricity',
+        'ElectricityPurchased:Facility',
+        'ElectricitySurplusSold:Facility',
+        'ElectricityNet:Facility',
+      ].each { |m| add_meter(model, m) }
     end
 
-    # Request output reports
-    # output tables as HTML and CSV
-    # octs = model.getOutputControlTableStyle
-    # octs.setColumnSeparator('CommaAndHTML')
+    # ── ResStock end-use sub-meters ───────────────────────────────────────────
+    # These are appliance-level breakdowns of InteriorEquipment:Electricity.
+    # EnergyPlus creates them via the end-use subcategory on ElectricEquipment
+    # objects. Each is guarded by checking the corresponding subcategory.
+    # The subcategory string in the meter name must exactly match the
+    # endUseSubcategory set on the ElectricEquipment object (case-insensitive
+    # in EP meter lookup, but match what ResStock sets).
+    #
+    # ResStock end-use subcategory -> meter name mapping:
+    #   'ceiling fan'         -> 'ceiling fan:InteriorEquipment:Electricity'
+    #   'clothes dryer'       -> 'clothes dryer:InteriorEquipment:Electricity'
+    #   'clothes washer'      -> 'clothes washer:InteriorEquipment:Electricity'
+    #   'cooking range'       -> 'cooking range:InteriorEquipment:Electricity'
+    #   'dishwasher'          -> 'dishwasher:InteriorEquipment:Electricity'
+    #   'fridge'              -> 'fridge:InteriorEquipment:Electricity'
+    #   'mech vent'           -> 'mech vent:InteriorEquipment:Electricity'
+    #   'misc plug loads'     -> 'misc plug loads:InteriorEquipment:Electricity'
+    #   'whole house fan'     -> 'whole house fan:InteriorEquipment:Electricity'
+    # Water heater adjustment is added by ResStock's water heater measure.
 
-    # add output control files
+    # Collect all end-use subcategories actually present in the model
+    electric_subcategories = model.getElectricEquipments
+                                  .map { |e| e.endUseSubcategory.downcase.strip }
+                                  .to_set
+
+    resstock_end_use_meters = {
+      'ceiling fan'       => 'ceiling fan:InteriorEquipment:Electricity',
+      'clothes dryer'     => 'clothes dryer:InteriorEquipment:Electricity',
+      'clothes washer'    => 'clothes washer:InteriorEquipment:Electricity',
+      'cooking range'     => 'cooking range:InteriorEquipment:Electricity',
+      'dishwasher'        => 'dishwasher:InteriorEquipment:Electricity',
+      'fridge'            => 'fridge:InteriorEquipment:Electricity',
+      'mech vent'         => 'mech vent:InteriorEquipment:Electricity',
+      'misc plug loads'   => 'misc plug loads:InteriorEquipment:Electricity',
+      'whole house fan'   => 'whole house fan:InteriorEquipment:Electricity',
+    }
+
+    resstock_end_use_meters.each do |subcategory, meter_name|
+      if electric_subcategories.include?(subcategory)
+        add_meter(model, meter_name)
+      end
+    end
+
+    # Water heater energy adjustment: added by ResStock water heater measures.
+    # The subcategory may be 'water heater energy adjustment' (without number)
+    # or 'water heater energy adjustment1' depending on ResStock version.
+    # Check for either.
+    wh_subcats = electric_subcategories.select { |s| s.start_with?('water heater energy adjustment') }
+    wh_subcats.each do |subcat|
+      meter_name = "#{subcat}:InteriorEquipment:Electricity"
+      add_meter(model, meter_name)
+    end
+
+    # ── Natural Gas ───────────────────────────────────────────────────────────
+    has_gas = model.getCoilHeatingGass.any? ||
+              model.getBoilerHotWaters.any? { |b| b.fuelType == 'NaturalGas' } ||
+              model.getWaterHeaterMixeds.any? { |wh| wh.heaterFuelType == 'NaturalGas' } ||
+              model.getGasEquipments.any?
+
+    if has_gas
+      runner.registerInfo('Natural gas equipment detected -- adding NaturalGas meters.')
+      [
+        'NaturalGas:Facility',
+        'NaturalGas:Building',
+        'Heating:NaturalGas',
+        'WaterSystems:NaturalGas',
+        'InteriorEquipment:NaturalGas',
+      ].each { |m| add_meter(model, m) }
+
+      # Exterior gas equipment only if present
+      if model.getExteriorFuelEquipments.any? { |e| e.fuelType.downcase == 'naturalgas' }
+        add_meter(model, 'ExteriorEquipment:NaturalGas')
+      end
+
+      # Gas end-use sub-meters (ResStock sets these via GasEquipment subcategories)
+      gas_subcategories = model.getGasEquipments
+                               .map { |e| e.endUseSubcategory.downcase.strip }
+                               .to_set
+
+      resstock_gas_meters = {
+        'clothes dryer'  => 'clothes dryer:InteriorEquipment:NaturalGas',
+        'cooking range'  => 'cooking range:InteriorEquipment:NaturalGas',
+        'fireplace'      => 'fireplace:InteriorEquipment:NaturalGas',
+        'grill'          => 'grill:InteriorEquipment:NaturalGas',
+        'lighting'       => 'lighting:InteriorEquipment:NaturalGas',
+      }
+
+      resstock_gas_meters.each do |subcategory, meter_name|
+        if gas_subcategories.include?(subcategory)
+          add_meter(model, meter_name)
+        end
+      end
+    else
+      runner.registerInfo('No natural gas equipment -- skipping NaturalGas meters.')
+    end
+
+    # ── Fuel Oil #1 ───────────────────────────────────────────────────────────
+    has_fueloil = model.getBoilerHotWaters.any? { |b| b.fuelType == 'FuelOilNo1' } ||
+                  model.getWaterHeaterMixeds.any? { |wh| wh.heaterFuelType == 'FuelOilNo1' }
+
+    if has_fueloil
+      runner.registerInfo('Fuel oil equipment detected -- adding FuelOilNo1 meters.')
+      [
+        'FuelOilNo1:Facility',
+        'FuelOilNo1:Building',
+        'Heating:FuelOilNo1',
+        'WaterSystems:FuelOilNo1',
+      ].each { |m| add_meter(model, m) }
+    else
+      runner.registerInfo('No fuel oil equipment -- skipping FuelOilNo1 meters.')
+    end
+
+    # ── Propane ───────────────────────────────────────────────────────────────
+    has_propane = model.getBoilerHotWaters.any? { |b| b.fuelType == 'Propane' } ||
+                  model.getWaterHeaterMixeds.any? { |wh| wh.heaterFuelType == 'Propane' } ||
+                  model.getCoilHeatingGass.any? { |c| c.fuelType == 'Propane' }
+
+    if has_propane
+      runner.registerInfo('Propane equipment detected -- adding Propane meters.')
+      [
+        'Propane:Facility',
+        'Propane:Building',
+        'Heating:Propane',
+        'WaterSystems:Propane',
+        'InteriorEquipment:Propane',
+      ].each { |m| add_meter(model, m) }
+
+      propane_subcategories = model.getOtherEquipments
+                                   .select { |e| e.fuelType == 'Propane' }
+                                   .map { |e| e.endUseSubcategory.downcase.strip }
+                                   .to_set
+
+      resstock_propane_meters = {
+        'clothes dryer' => 'clothes dryer:InteriorEquipment:Propane',
+        'cooking range' => 'cooking range:InteriorEquipment:Propane',
+      }
+
+      resstock_propane_meters.each do |subcategory, meter_name|
+        if propane_subcategories.include?(subcategory)
+          add_meter(model, meter_name)
+        end
+      end
+    else
+      runner.registerInfo('No propane equipment -- skipping Propane meters.')
+    end
+
+    # =========================================================================
+    # OUTPUT CONTROL FILES
+    # =========================================================================
     ocf = model.getOutputControlFiles
     ocf.setOutputCSV(true)
     ocf.setOutputMTR(true)
@@ -231,5 +370,4 @@ class AddOutputs < OpenStudio::Measure::ModelMeasure
   end
 end
 
-# register the measure to be used by the application
 AddOutputs.new.registerWithApplication
